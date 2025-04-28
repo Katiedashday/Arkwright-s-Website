@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Basket</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <a href="home.html"><img src="/img/Logo.png" alt="Company Logo" /></a>
+    </div>
+    <nav class="menu">
+      <a href="about_us.html"><h1>ABOUT US</h1></a>
+      <a href="product.html"><h1>SHOP NOW</h1></a>
+      <a href="contact.html"><h1>CONTACT US</h1></a>
+    </nav>
+    <div class="basket">
+      <a href="basket.html"><img src="img/Shopping Cart.png" /></a>
+      <div class="totalQuantity">0</div>
+    </div>
+  </header>
+  <div class="red-box">
+    <p>Free Shipping on Orders Over £50!</p>
+</div>
+
+  <div class="container">
+    <h1>Your Shopping Basket</h1>
+    <div class="basket-items"></div>
+    <div class="basket-summary">
+      <h2>Total: £<span id="totalPrice">0.00</span></h2>
+    </div>
+  </div>
+
+  <script>
+    const basketItemsContainer = document.querySelector('.basket-items');
+    const totalPriceElement = document.getElementById('totalPrice');
+
+    function updateCartUI() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const totalQuantity = localStorage.getItem('totalQuantity') || 0;
+      document.querySelector('.totalQuantity').innerText = totalQuantity;
+
+      basketItemsContainer.innerHTML = '';
+
+      let total = 0;
+      cart.forEach(item => {
+        total += item.price * item.quantity;
+
+        const itemDiv = document.createElement('div');
+        itemDiv.classList.add('basket-item');
+        itemDiv.innerHTML = `
+          <img src="${item.image}" alt="${item.name}" width="100" />
+          <div>
+            <h3>${item.name}</h3>
+            <p>Price: £${item.price}</p>
+            <p>Quantity: 
+              <input type="number" min="1" value="${item.quantity}" data-id="${item.id}" class="qty-input">
+              <button class="remove-btn" data-id="${item.id}">Remove</button>
+            </p>
+          </div>
+        `;
+        basketItemsContainer.appendChild(itemDiv);
+      });
+
+      totalPriceElement.innerText = total.toFixed(2);
+    }
+
+    // Handle quantity changes or item removal
+    basketItemsContainer.addEventListener('change', (e) => {
+      if (e.target.classList.contains('qty-input')) {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const id = Number(e.target.getAttribute('data-id'));
+        const newQty = parseInt(e.target.value);
+        const item = cart.find(p => p.id === id);
+        if (item) {
+          item.quantity = newQty;
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        const totalQty = cart.reduce((acc, item) => acc + item.quantity, 0);
+        localStorage.setItem('totalQuantity', totalQty);
+        updateCartUI();
+      }
+    });
+
+    basketItemsContainer.addEventListener('click', (e) => {
+      if (e.target.classList.contains('remove-btn')) {
+        const id = Number(e.target.getAttribute('data-id'));
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart = cart.filter(item => item.id !== id);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        const totalQty = cart.reduce((acc, item) => acc + item.quantity, 0);
+        localStorage.setItem('totalQuantity', totalQty);
+        updateCartUI();
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', updateCartUI);
+  </script>
+</body>
+</html>

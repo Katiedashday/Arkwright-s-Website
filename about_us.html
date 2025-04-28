@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="home.html">
+                <img src="/img/Logo.png" alt="Company Logo">
+            </a>
+        </div>
+        <nav class="menu">
+            <a href="about_us.html"><h1>ABOUT US</h1></a>
+            <a href="product.html"><h1>SHOP NOW</h1></a>
+            <a href="contact.html"><h1>CONTACT US</h1></a>
+          </nav>
+          <div class="basket">
+            <i class="fa-solid fa-basket"></i>
+            <span>
+                <a href="basket.html">
+                    <img src="img/Shopping Cart.png">
+                </a>
+            </span>
+            <div class="totalQuantity">0</div>
+    </header>
+    
+    <div class="red-box">
+        <p>Free Shipping on Orders Over £50!</p>
+    </div>
+    <div class="container_text">
+        <h2 class="text-red">About Us</h2>
+        <p><strong>Arkswright’s Allsorts</strong> is dealer owned and is the largest voluntary organisation of its kind in the UK for independently owned hardware and DIY stores.</p>
+
+        <h2>Mission Statement</h2>
+        <p>Our mission is to supply independent retailers with quality products and services, to provide them with programmes to operate efficient and profitable stores, and assist them in serving the customer with competitive prices and superior service.</p>
+        <p>The company's philosophy is different to some conventional distributors whose basic objective is to maximise their own profit. We are firmly focused on the needs of our retail customers.</p>
+        <p>In essence, Home Hardware is about 'people helping people' — our staff helping retailers and retailers helping their customers, working together to secure their future. Our significant purchasing power, together with the use of efficient systems enables us to provide our customers with excellent service and value.</p>
+
+        <h2>General</h2>
+        <p>Arkswright’s Allsorts is dealer owned and is the largest organisation of its kind in the UK, for independent hardware stores. The company has over 400 members including; independent hardware retailers, housewares shops, cook shops, ironmongers and garden centres.</p>
+        <p>Owned by the retailers it serves, Arkswright’s Allsorts enables its members to compete against multiple high street names and DIY superstores. By combining buying power, Home Hardware stores offer greater value for money. Prices (locally and nationally) are continually checked to ensure our members provide the best deals to you! Our team of professional buyers source products from around the globe, ensuring that our stores offer 'up-to-date' products at excellent prices.</p>
+        <p>Arkswright’s Allsorts provides national distribution from its two distribution centres at Barnstaple and Bedford.</p>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const totalQuantity = localStorage.getItem('totalQuantity') || 0;
+          document.querySelector('.totalQuantity').innerText = totalQuantity;
+        });
+      </script>
+      
+</body>
+</html>

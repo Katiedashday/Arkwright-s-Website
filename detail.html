@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="home.html">
+                <img src="/img/Logo.png" alt="Company Logo">
+            </a>
+        </div>
+        <nav class="menu">
+            <a href="about_us.html"><h1>ABOUT US</h1></a>
+            <a href="product.html"><h1>SHOP NOW</h1></a>
+            <a href="contact.html"><h1>CONTACT US</h1></a>
+          </nav>
+          <div class="basket">
+            <i class="fa-solid fa-basket"></i>
+            <span>
+                <a href="basket.html">
+                    <img src="img/Shopping Cart.png">
+                </a>
+            </span>
+            <div class="totalQuantity">0</div>
+    </header>
+    
+    <div class="red-box">
+        <p>Free Shipping on Orders Over £50!</p>
+    </div>
+    <div class="container">
+        <div class="title">PRODUCT DETAILS</div>
+        <div class="detail">
+            <div class="image">
+                <img src="" alt="">
+            </div>
+            <div class="product_content">
+                <h1 class="name"></h1>
+                <div class="price"></div>
+                <div class="buttons">
+                    <button>Check Out</button>
+                    <button id="addToCartBtn">
+                        Add To Cart
+                        <span>
+                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
+                              </svg>
+                              
+                        </span>
+                    </button>
+                </div>
+                <div class="description"></div>
+            </div>
+           </div> 
+        </div>
+        <script>
+            let products = null;
+            let thisProduct = null; // Make it global so it's accessible in the addToCart handler
+            
+            fetch('products.json')
+              .then(response => response.json())
+              .then(data => {
+                products = data;
+                showDetail();
+                setupAddToCart(); // Call after loading product
+              })
+              .catch(error => {
+                console.error('Error loading products.json:', error);
+              });
+            
+            function showDetail() {
+              const detail = document.querySelector('.detail');
+              let productId = new URLSearchParams(window.location.search).get('id');
+            
+              thisProduct = products.find(value => value.id == Number(productId));
+            
+              if (!thisProduct) {
+                window.location.href = "/";
+                return;
+              }
+            
+              detail.querySelector('.image img').src = thisProduct.image;
+              detail.querySelector('.name').innerText = thisProduct.name;
+              detail.querySelector('.price').innerText = '£' + thisProduct.price;
+              detail.querySelector('.description').innerText = thisProduct.description;
+            }
+            
+            // Display total quantity on page load
+            document.addEventListener('DOMContentLoaded', () => {
+              const total = localStorage.getItem('totalQuantity') || 0;
+              document.querySelector('.totalQuantity').innerText = total;
+            });
+            
+            // Set up Add to Cart button
+            function setupAddToCart() {
+              document.getElementById('addToCartBtn').addEventListener('click', () => {
+                let totalQuantity = localStorage.getItem('totalQuantity') 
+                  ? parseInt(localStorage.getItem('totalQuantity')) 
+                  : 0;
+            
+                totalQuantity++;
+                localStorage.setItem('totalQuantity', totalQuantity);
+                document.querySelector('.totalQuantity').innerText = totalQuantity;
+            
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const productInCart = cart.find(p => p.id === thisProduct.id);
+            
+                if (productInCart) {
+                  productInCart.quantity += 1;
+                } else {
+                  cart.push({ ...thisProduct, quantity: 1 });
+                }
+            
+                localStorage.setItem('cart', JSON.stringify(cart));
+            
+                // Optional: user feedback
+                const btn = document.getElementById('addToCartBtn');
+                btn.disabled = true;
+                btn.innerText = "Added!";
+                setTimeout(() => {
+                  btn.disabled = false;
+                  btn.innerText = "Add To Cart";
+                }, 1000);
+              });
+            }
+            </script>
+            
+        <!-- <script>
+            let products = null;
+            
+            fetch('products.json')
+              .then(response => response.json())
+              .then(data => {
+                products = data;
+                showDetail();
+              })
+              .catch(error => {
+                console.error('Error loading products.json:', error);
+              });
+            
+            function showDetail() {
+              const detail = document.querySelector('.detail');
+              let productId = new URLSearchParams(window.location.search).get('id');
+            
+              const thisProduct = products.find(value => value.id == Number(productId));
+            
+              if (!thisProduct) {
+                window.location.href = "/";
+                return;
+              }
+            
+              detail.querySelector('.image img').src = thisProduct.image;
+              detail.querySelector('.name').innerText = thisProduct.name;
+              detail.querySelector('.price').innerText = '£' + thisProduct.price;
+              detail.querySelector('.description').innerText = thisProduct.description;
+            }
+            </script> -->
+    
+</body>
+</html>

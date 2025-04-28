@@ -1,0 +1,65 @@
+[
+    {
+        "id": 1,
+        "name": "Precision Tool Kit",
+        "price": 36.99,
+        "image": "img/1.png",
+        "description": "Set includes 98 screwdriver bits, 17 disassembly accessories, 1 handle, 1 flexible extension shaft, 1 extension bar, 1 set of tweezers, 3 plastic pry tools, 1 SIM card removal tool, 1 suction cup, 6 opening picks, 1 magnetizer/demagnetizer & 1 x 1/4in to 4mm driver adaptor."
+
+    },
+    {
+        "id": 2,
+        "name": "Home DIY Brush Cleaner",
+        "price": 32.55,
+        "image": "img/2.png",
+        "description": "Give your brushes a thorough cleaning to prolong their life and keep them in good condition. The Brush Cleaner formula is a water soluble solvent for easy cleaning after using oil based paints."
+
+    }, 
+    {
+        "id": 3,
+        "name": "Cable Reel 4 Socket",
+        "price": 35.75,
+        "image": "img/3.png",
+        "description": "This cable reel comes with 4 x 13amp sockets.  The 15m cable will allow you access to a wide range of your outdoor space and the thermal cut out will ensure peace of mind."
+        
+
+    }, 
+    {
+        "id": 4,
+        "name": "Classic Toolbox",
+        "price": 117.25,
+        "image": "img/4.png",
+        "description": "The set of 2 allows you to store a wide variety of different tools and accessories ready for those DIY jobs."
+
+    }, 
+    {
+        "id": 5,
+        "name": "Multi Purpose Polyfilla",
+        "price": 7.95,
+        "image": "img/5.png",
+        "description": "This tube of ready mixed Pollyfilla is ideal to have around your home for simple repairs! It’s a high quality formulation that guarantees adhesion and ensures crack free results that won’t shrink."
+
+    }, 
+    {
+        "id": 6,
+        "name": "Woodstain Antique Pine 2.5Litre",
+        "price": 56.65,
+        "image": "img/6.png",
+        "description": "A great choice of colours, depending on what you need. It'll take a little longer to dry than the quick drying, but it'll last year after year, after year."
+
+    }, 
+    {
+        "id": 7,
+        "name": "5 Year Ducksback",
+        "price": 13.99,
+        "image": "img/7.png",
+        "description": "Use Cuprinol's ducksback to gives a showerproof finish in just one hour! The wax enriched formula is easy to apply with non-drip results and will give your fences and shed an advanced colour."
+    }, 
+    {
+        "id": 8,
+        "name": "Classic",
+        "price": 19.99,
+        "image": "img/8.png",
+        "description": "The wood protection formula absorbs deep into the timber to provide protection against weathering, blistering and flaking. It is highly effective on large areas such as cladding, decking and rough sawn timber. You will also be left with a highly attractive finish with long-lasting colour."
+    }
+]

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Arkswright's Allsorts</title>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <a href="home.html">
+                <img src="/img/Logo.png" alt="Company Logo">
+            </a>
+        </div>
+        <nav class="menu">
+            <a href="about_us.html"><h1>ABOUT US</h1></a>
+            <a href="product.html"><h1>SHOP NOW</h1></a>
+            <a href="contact.html"><h1>CONTACT US</h1></a>
+          </nav>
+          <div class="basket">
+            <i class="fa-solid fa-basket"></i>
+            
+            <span>
+                <a href="basket.html">
+                    <img src="img/Shopping Cart.png">
+                </a>
+            </span>
+            <div class="totalQuantity">0</div>
+    </header>
+    
+    <div class="red-box">
+        <p>Free Shipping on Orders Over £50!</p>
+    </div>
+    
+
+    <main class="content">
+        <div class="store-title">
+            <a href="product.html">
+                <h1>ARKSWRIGHT’S ALLSORTS</h1>
+            </a>
+        </div>
+        <div class="store-subtitle">
+            <a href="product.html">
+            <h1>Online Store</h1>
+        </a>
+        </div>
+    </main>
+    
+   
+    <footer class="footer">
+        <table style="width:100%; border:none;">
+            
+              <tr>
+                <td><p>Address:</p>
+                    45 Cannon Street, Middlesbrough, Cleveland, TS1 5SL</td>
+                <td>
+                    <a href="contact.html">Contact Us</a>
+                </td>
+              </tr>
+              </table>
+      </footer>
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const totalQuantity = localStorage.getItem('totalQuantity') || 0;
+          document.querySelector('.totalQuantity').innerText = totalQuantity;
+        });
+      </script>
+                      
+  
+</body>
+</html>
